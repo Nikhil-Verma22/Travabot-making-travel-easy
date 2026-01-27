@@ -1,0 +1,161 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    
+    --primary: 217 91% 60%;
+    --primary-foreground: 210 40% 98%;
+    
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    
+    --accent: 250 70% 60%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 217 91% 60%;
+    
+    --radius: 0.75rem;
+    
+    --gradient-primary: linear-gradient(135deg, hsl(217, 91%, 60%), hsl(250, 70%, 60%));
+    --gradient-hero: linear-gradient(180deg, hsl(220, 40%, 98%) 0%, hsl(220, 40%, 95%) 100%);
+    
+    --shadow-glow: 0 0 40px hsl(217 91% 60% / 0.4);
+    --shadow-card: 0 4px 20px hsl(217 91% 60% / 0.1);
+  }
+  
+  .dark {
+    --background: 220 40% 5%;
+    --foreground: 210 40% 98%;
+    
+    --card: 220 30% 8%;
+    --card-foreground: 210 40% 98%;
+    
+    --popover: 220 30% 8%;
+    --popover-foreground: 210 40% 98%;
+    
+    --primary: 217 91% 60%;
+    --primary-foreground: 210 40% 98%;
+    
+    --secondary: 220 25% 15%;
+    --secondary-foreground: 210 40% 98%;
+    
+    --muted: 220 25% 15%;
+    --muted-foreground: 215 20% 65%;
+    
+    --accent: 250 70% 60%;
+    --accent-foreground: 210 40% 98%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    
+    --border: 220 25% 20%;
+    --input: 220 25% 20%;
+    --ring: 217 91% 60%;
+    
+    --gradient-hero: linear-gradient(180deg, hsl(220, 40%, 8%) 0%, hsl(220, 40%, 5%) 100%);
+    
+    --shadow-glow: 0 0 40px hsl(217 91% 60% / 0.4);
+    --shadow-card: 0 4px 20px hsl(0 0% 0% / 0.5);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground transition-colors duration-300;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+  
+  @keyframes glow {
+    from {
+      box-shadow: 0 0 20px hsl(217 91% 60% / 0.3);
+    }
+    to {
+      box-shadow: 0 0 40px hsl(217 91% 60% / 0.6);
+    }
+  }
+  
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+  }
+}
+
+/* Custom Leaflet popup styling for dark theme */
+.leaflet-popup-content-wrapper {
+  background: hsl(220, 30%, 12%);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  border: 1px solid hsl(220, 25%, 20%);
+}
+
+.leaflet-popup-content {
+  margin: 12px;
+}
+
+.leaflet-popup-tip {
+  background: hsl(220, 30%, 12%);
+  border: 1px solid hsl(220, 25%, 20%);
+  border-top: none;
+  border-right: none;
+}
+
+.leaflet-popup-close-button {
+  color: #a1a1aa !important;
+  font-size: 18px !important;
+  width: 24px !important;
+  height: 24px !important;
+  top: 8px !important;
+  right: 8px !important;
+}
+
+.leaflet-popup-close-button:hover {
+  color: #fff !important;
+}
+
+/* Ensure Leaflet map container has lower z-index than modals/sheets */
+.leaflet-container {
+  z-index: 0 !important;
+}
+
+.leaflet-pane {
+  z-index: 0 !important;
+}
+
+.leaflet-top,
+.leaflet-bottom {
+  z-index: 10 !important;
+}
