@@ -287,3 +287,5 @@ Open [http://localhost:8080](http://localhost:8080)
 ## 📄 License
 
 MIT
+#   T e a m - I n t e l l e c t u s  
+ 
