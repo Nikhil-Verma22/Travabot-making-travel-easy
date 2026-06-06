@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+  width="512" height="512"
+  viewBox="0 0 512 512"
+  fill="none"
+  stroke="white"
+  stroke-width="42"
+  stroke-linecap="round"
+  stroke-linejoin="round">
+
+  <!-- Outer circle -->
+  <circle cx="256" cy="256" r="210"></circle>
+
+  <!-- Vertical globe curve -->
+  <path d="M256 46a310 310 0 0 0 0 420 310 310 0 0 0 0-420"></path>
+
+  <!-- Horizontal globe line -->
+  <path d="M46 256h420"></path>
+</svg>

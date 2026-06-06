@@ -410,8 +410,8 @@ Create a modern, responsive travel planning web application focused on Jaipur, I
 - `/api/recommendations` - AI recommendations
 
 ## Deployment
-- Frontend: Lovable Cloud or Vercel/Netlify
-- Backend: Lovable Cloud (Supabase)
+- Frontend: Vercel/Netlify
+- Backend: Supabase
 - CDN: Cloudflare for static assets
 - Database: PostgreSQL (via Supabase)
 - File Storage: Supabase Storage

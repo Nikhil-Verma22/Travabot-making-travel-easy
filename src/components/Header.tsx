@@ -1,4 +1,4 @@
-import { Globe, Sun, Moon, LogIn, LogOut, User } from "lucide-react";
+import { Sun, Moon, LogIn, LogOut, User } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useTheme } from "./ThemeProvider";
 import { useAuth } from "@/context/AuthContext";
@@ -34,7 +34,7 @@ export function Header() {
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center space-x-3 group">
             <div className="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center shadow-glow transition-transform group-hover:scale-110">
-              <Globe className="w-6 h-6 text-white" />
+              <img src="/logo.svg" alt="TravaBOT Logo" className="w-6 h-6" />
             </div>
             <h1 className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
               TravaBOT

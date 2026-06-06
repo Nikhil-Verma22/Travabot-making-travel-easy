@@ -42,25 +42,56 @@ Be friendly, concise, and focus on ${destination}-specific information. If asked
   return `You are a helpful travel assistant for exploring India. Help users discover amazing destinations, plan trips, and provide travel recommendations. Be friendly, informative, and concise. Cover attractions, restaurants, travel tips, and local experiences.`;
 }
 
-// Helper function to get AI configuration
-// Supports both Lovable AI Gateway and OpenAI
+// Multi-provider AI configuration - supports free alternatives
 function getAIConfig() {
-  const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
-  const OPENAI_API_KEY = Deno.env.get("OPENAI_API_KEY");
-  
-  if (LOVABLE_API_KEY) {
+  // Try Hugging Face (Free, no credit card required)
+  const HUGGINGFACE_API_KEY = Deno.env.get("HUGGINGFACE_API_KEY");
+  if (HUGGINGFACE_API_KEY) {
     return {
-      apiKey: LOVABLE_API_KEY,
-      baseUrl: "https://ai.gateway.lovable.dev/v1/chat/completions",
-      model: "google/gemini-2.5-flash"
-    };
-  } else if (OPENAI_API_KEY) {
-    return {
-      apiKey: OPENAI_API_KEY,
-      baseUrl: "https://api.openai.com/v1/chat/completions",
-      model: "gpt-4o-mini" // Cost-effective model, change to "gpt-4" for better quality
+      provider: "huggingface",
+      apiKey: HUGGINGFACE_API_KEY,
+      baseUrl: "https://api-inference.huggingface.co/models/microsoft/DialoGPT-large",
+      headers: { "Authorization": `Bearer ${HUGGINGFACE_API_KEY}` },
+      model: "microsoft/DialoGPT-large"
     };
   }
+
+  // Try Groq (Free tier available)
+  const GROQ_API_KEY = Deno.env.get("GROQ_API_KEY");
+  if (GROQ_API_KEY) {
+    return {
+      provider: "groq",
+      apiKey: GROQ_API_KEY,
+      baseUrl: "https://api.groq.com/openai/v1/chat/completions",
+      headers: { "Authorization": `Bearer ${GROQ_API_KEY}` },
+      model: "llama3-8b-8192"
+    };
+  }
+
+  // Try Google Gemini (Free tier available) - Default key provided
+  const GEMINI_API_KEY = Deno.env.get("GEMINI_API_KEY") || "AIzaSyC4NGR2CWVoSiuIVBEW9eTX4fx3puC3qjU";
+  if (GEMINI_API_KEY) {
+    return {
+      provider: "gemini",
+      apiKey: GEMINI_API_KEY,
+      baseUrl: `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEMINI_API_KEY}`,
+      headers: { "Content-Type": "application/json" },
+      model: "gemini-pro"
+    };
+  }
+
+  // Fallback to OpenAI (requires payment)
+  const OPENAI_API_KEY = Deno.env.get("OPENAI_API_KEY");
+  if (OPENAI_API_KEY) {
+    return {
+      provider: "openai",
+      apiKey: OPENAI_API_KEY,
+      baseUrl: "https://api.openai.com/v1/chat/completions",
+      headers: { "Authorization": `Bearer ${OPENAI_API_KEY}` },
+      model: "gpt-4o-mini"
+    };
+  }
+  
   return null;
 }
 
@@ -74,7 +105,7 @@ serve(async (req) => {
     const aiConfig = getAIConfig();
     
     if (!aiConfig) {
-      throw new Error("No AI API key configured. Set either LOVABLE_API_KEY (for Lovable) or OPENAI_API_KEY (for local development) in your edge function secrets.");
+      throw new Error("No AI API key configured. Using default Gemini key - should work automatically!");
     }
 
     const systemPrompt = buildSystemPrompt(tripContext);

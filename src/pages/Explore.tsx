@@ -11,6 +11,7 @@ import { ChatBot } from "@/components/ChatBot";
 import { useTrip } from "@/context/TripContext";
 import { usePOIs, POI } from "@/hooks/usePOIs";
 import { PlaceDetailSheet } from "@/components/PlaceDetailSheet";
+import { CacheStatus } from "@/components/CacheStatus";
 
 // Fix for default marker icon
 delete (L.Icon.Default.prototype as any)._getIconUrl;
@@ -474,7 +475,15 @@ const Explore = () => {
 
             {/* Filters */}
             <div className="space-y-3">
-              <h3 className="font-semibold text-sm">Filters</h3>
+              <div className="flex items-center justify-between">
+                <h3 className="font-semibold text-sm">Filters</h3>
+                <CacheStatus 
+                  isLoading={isLoading} 
+                  isCached={isCached} 
+                  onRefresh={refetch}
+                  className="text-xs"
+                />
+              </div>
               <div className="space-y-2">
                 {Object.entries(filters).map(([key, value]) => (
                   <label key={key} className="flex items-center justify-between cursor-pointer p-2 rounded-lg hover:bg-muted/50 transition-colors">

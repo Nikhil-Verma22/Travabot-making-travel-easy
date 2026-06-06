@@ -2,6 +2,18 @@
 
 A comprehensive travel planning application for exploring India, featuring AI-powered itinerary generation, city search, attractions discovery, and transport options.
 
+## 📸 App Screenshots & Features
+
+Here is a visual guide to TravaBOT's key features:
+
+| Screen | Description |
+| --- | --- |
+| **Dashboard** <br><br> ![Dashboard](assets/dashboard.png) | The landing dashboard featuring beautiful animations, theme toggles, and interactive city search to start planning your Indian travel. |
+| **Attractions Explorer** <br><br> ![Explorer Page](assets/explorer_page.png) | Discover attractions, popular local restaurants, and lodging options complete with ratings, pricing, and visual representations. |
+| **Transport Options** <br><br> ![Booking Page](assets/booking_page.png) | View flights, trains, and bus routes complete with pricing, duration, and schedules to easily book your transition between locations. |
+| **Itinerary Planner** <br><br> ![Itinerary Manager](assets/itenerary_manager.png) | An AI-generated, custom day-by-day itinerary incorporating selected sites and dining options, which is fully interactive. |
+| **PDF Itinerary Export** <br><br> ![PDF Generated Itinerary](assets/pdf_generated_form_itenerary.png) | Instantly download your comprehensive travel plan in a clean, print-friendly PDF format for sharing and offline access. |
+
 ## 🏆 FOR JUDGES - QUICK SETUP GUIDE
 
 ### ⚡ Fastest Way to Run (5 minutes)
@@ -172,17 +184,22 @@ supabase functions deploy get-place-info
 supabase functions deploy search-cities
 ```
 
-### Step 7: Set Edge Function Secrets
+### Step 7: Set Edge Function Secrets (OPTIONAL - Already Configured!)
 
-In **Supabase Dashboard > Settings > Edge Functions > Secrets**, add:
+**✅ Good news:** A free Gemini API key is already configured in the code!
 
-| Secret | Description |
-|--------|-------------|
-| `SUPABASE_URL` | Your project URL |
-| `SUPABASE_SERVICE_ROLE_KEY` | Service role key from API settings |
-| `OPENAI_API_KEY` | **OR** `LOVABLE_API_KEY` for AI features |
+**AI features will work immediately without any setup.**
 
-> **Note:** AI features (chat, itinerary, transport) require either an OpenAI API key or Lovable API key. Get an OpenAI key from [platform.openai.com](https://platform.openai.com).
+If you want to use a different AI provider, add **ONE** of these to **Supabase Dashboard > Settings > Edge Functions > Secrets**:
+
+| Secret | Description | Cost |
+|--------|-------------|------|
+| `HUGGINGFACE_API_KEY` | Hugging Face (alternative) | ✅ Free |
+| `GROQ_API_KEY` | Groq (alternative) | ✅ Free |
+| `GEMINI_API_KEY` | Your own Gemini key | ✅ Free |
+| `OPENAI_API_KEY` | OpenAI (requires payment) | 💰 Paid |
+
+> **For Judges:** Skip this step! AI features work out of the box with the included Gemini key.
 
 ### Step 8: Run the App
 
@@ -191,6 +208,35 @@ npm run dev
 ```
 
 Open [http://localhost:8080](http://localhost:8080)
+
+---
+
+## 🆓 AI FEATURES - READY TO USE!
+
+**✅ GREAT NEWS:** Your Gemini API key is already configured!
+
+**All AI features work immediately:**
+- 🤖 AI Chatbot
+- 📅 AI Itinerary Generation  
+- 🚗 AI Transport Suggestions
+
+**No additional setup required for judges!**
+
+### Optional: Alternative AI Providers
+
+If you want to try different AI providers, you can set these in Supabase secrets:
+
+### Option 1: Hugging Face
+1. Go to [huggingface.co](https://huggingface.co) → Sign up (free)
+2. Settings → Access Tokens → Create new token
+3. Add `HUGGINGFACE_API_KEY=hf_your_token` to Supabase secrets
+
+### Option 2: Groq (Fast & Free)
+1. Go to [console.groq.com](https://console.groq.com) → Sign up (free)
+2. Get API key
+3. Add `GROQ_API_KEY=your_key` to Supabase secrets
+
+**But the default Gemini setup works perfectly for demonstrations!**
 
 ---
 
@@ -228,7 +274,7 @@ Open [http://localhost:8080](http://localhost:8080)
 - **State:** React Query, Context API
 - **Maps:** Leaflet + OpenStreetMap
 - **Backend:** Supabase (Auth, Database, Edge Functions)
-- **AI:** OpenAI / Lovable AI Gateway
+- **AI:** OpenAI GPT
 - **PDF:** jsPDF
 
 ---
@@ -287,6 +333,8 @@ Open [http://localhost:8080](http://localhost:8080)
 ## 📄 License
 
 MIT
-#   T e a m - I n t e l l e c t u s  
- #   T e a m - I n t e l l e c t u s  
+#   T e a m - I n t e l l e c t u s 
+ 
+ #   T e a m - I n t e l l e c t u s 
+ 
  

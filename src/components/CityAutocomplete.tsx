@@ -46,16 +46,16 @@ export function CityAutocomplete({
       clearTimeout(debounceRef.current);
     }
 
-    // Shorter debounce for faster response
+    // Very short debounce for instant feel (like Google)
     debounceRef.current = setTimeout(() => {
-      if (newValue.length >= 2) {
+      if (newValue.length >= 1) {
         searchCities(newValue);
         setIsOpen(true);
       } else {
         clearResults();
         setIsOpen(false);
       }
-    }, 150); // Reduced from 300ms to 150ms
+    }, 50); // Ultra-fast response time
   };
 
   const handleSelect = (city: CitySearchResult) => {

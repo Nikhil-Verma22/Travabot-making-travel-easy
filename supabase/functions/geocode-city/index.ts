@@ -64,7 +64,7 @@ serve(async (req) => {
     
     const nominatimResponse = await fetch(nominatimUrl, {
       headers: {
-        "User-Agent": "TravaBOT/1.0 (https://lovable.dev)", // Required by Nominatim
+        "User-Agent": "TravaBOT/1.0 (https://github.com/Team-Intellectus)", // Required by Nominatim
       },
     });
 
