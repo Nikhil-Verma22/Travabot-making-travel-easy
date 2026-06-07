@@ -333,8 +333,7 @@ If you want to try different AI providers, you can set these in Supabase secrets
 ## 📄 License
 
 MIT
-#   T e a m - I n t e l l e c t u s 
- 
- #   T e a m - I n t e l l e c t u s 
- 
- 
+# Team-Intellectus
+
+# Team-Intellectus
+
